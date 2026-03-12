@@ -7,7 +7,6 @@
 *   **架构选型与论证**：AI 建议采用 **Kafka + MySQL** 的组合，并清晰地解释了这一选型在“可靠性”与“审计追溯”方面的优势，帮助我快速锁定了技术栈。
 *   **代码框架生成**：AI 快速生成了基于 FastAPI 的 HTTP Server、基于 Kafka-python 的生产/消费逻辑，以及 SQLAlchemy 的模型定义，节省了大量编写样板代码的时间。
 *   **重试算法实现**：AI 提供了完善的**指数退避重试**算法建议，并帮助实现了基于 `available_after` 时间戳的定时扫描重试机制，这是系统可靠性的核心。
-*   **设计模式应用**：在消息投递环节，AI 建议并实现了 **Strategy (策略模式)**，使得系统能够轻松扩展不同的通知渠道（SMS, Email, Push 等）而无需修改核心业务流程。
 *   **引入 `ApiConfig` 动态模板**：AI 建议引入 `ApiConfig` 表，通过 JSON 模板来定义 Header 和 Payload，以应对供应商接口格式的频繁变动。
 *   **原子化状态更新 (State Machine)**：AI 建议在 Worker 更新 DB 状态时使用 `from_status` 进行校验，实现一个简单的状态机，防止并发环境下的“脏写”或状态回退。
 *   **定时扫描器的双重校验**：在扫描 `RETRY_PENDING` 记录时，AI 建议使用 `with_for_update(skip_locked=True)`，防止分布式部署时重复投递。
